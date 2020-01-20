@@ -16,7 +16,7 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "펭긴새's Lyf'"
+title                    : "펭긴새's Lyf"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "펭긴새"
@@ -299,3 +299,15 @@ defaults:
       comments: # true
       share: true
       related: true
+
+  # _pages
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      author_profile: true
+      read_time: false
+      comments: false
+      share: true
+      related: false
