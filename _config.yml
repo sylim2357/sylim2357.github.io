@@ -118,10 +118,10 @@ author:
       url: mailto:sylim2357@dm.snu.ac.kr
     - label: "Website"
       icon: "fas fa-fw fa-link"
-      url: "https://sylim2357@github.io"
+      url: https://sylim2357@github.io
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
-      url: "https://www.linkedin.com/in/sylim2357/"
+      url: https://www.linkedin.com/in/sylim2357/
     - label: "Twitter"
       icon: "fab fa-fw fa-twitter-square"
       # url: "https://twitter.com/"
@@ -130,7 +130,7 @@ author:
       # url: "https://facebook.com/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/sylim2357"
+      url: https://github.com/sylim2357
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
       # url: "https://instagram.com/"
