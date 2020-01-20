@@ -144,7 +144,7 @@
   padding-right: 25px;
   line-height: 1;
 
-  @include breakpoint($x-large) {
+  @include breakpoint($large) {
     display: block;
     width: 100%;
     padding-left: 0;
