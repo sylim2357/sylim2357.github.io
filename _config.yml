@@ -109,8 +109,8 @@ analytics:
 author:
   name             : "펭긴새"
   avatar           : "/assets/images/logo_test.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "사람"
-  location         : ""
+  bio              : "일 벌리기 좋아함"
+  #location         : ""
   email            : "sylim2357@dm.snu.ac.kr"
   links:
     - label: "Email"
