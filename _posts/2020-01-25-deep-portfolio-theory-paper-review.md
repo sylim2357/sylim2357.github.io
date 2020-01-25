@@ -34,8 +34,10 @@ Risk-return trade-off의 개념을 딥러닝 기반의 포트폴리오 구축에
 
 # 4 Steps of Deep Portfolio Theory
 ## Encoding
-Encoding step의 목표는 일종의 전처리로서, 시장의 정보를 압축하는 'Market Map', $$F^{m}_{W}(X)$$를 찾는 것이다. 주어진 universe(혹은 index, 같은말임)을 잘 추적하는 새로운 representation을 찾는 것이라고 이해할 수 있다. 아래의 최적화 문제를 풀어 찾는다.  
+Encoding step의 목표는 일종의 전처리로서, 시장의 정보를 압축하는 'Market Map', $$F^{m}_{W}(X)$$를 찾는 것이다. 주어진 universe(혹은 index, 같은말임)을 잘 추적하는 새로운 representation을 찾는 것이라고 이해할 수 있다. 아래의 최적화 문제를 풀어 찾는다.
+
 $$\underset{W}{\text{min}}||X-F^{m}_{W}(X)||^{2}_{2} \quad \text{subject to} \quad ||W|| \leq L^{m}$$  
+
 $$F^{m}_{W}(X)$$은 input인 수익률($$X$$)을 reconstruct하는 함수이며, 이 논문에선 오토인코더를 사용한다. 각 종목의 수익률을 얼마나 잘 reconstruct하는지(communal information)를 계산한 다음, well-reconstructed 10개와 least well-reconstructed n개를 뽑아 다음 단계를 진행한다.
 
 ## Calibrating
@@ -43,9 +45,11 @@ Calibrating step는 1번의 결과물인 시장의 정보를 사용하여 목표
 $$\underset{W}{\text{min}}||Y-F^{p}_{W}(X)||^{2}_{2} \quad \text{subject to} \quad ||W|| \leq L^{p}$$
 
 ## Validating
-Validating step은 위 각 최적화 문제의 오차들 사이의 trade-off를 조절해 $$L^{m}$$과 $$L^{p}$$를 찾는 과정이다.  
-$$\epsilon_{m} = ||\hat{X}-F^{m}_{W^{\*}_{m}}(\hat{X})||^{2}_{2}$$ and $$\epsilon_{p} = ||\hat{Y}-F^{p}_{W^{\*}_{p}}(\hat{X})||^{2}_{2}$$  
-$$W^{\*}_{m}$$ 와 $$W^{\*}_{p}$$는 각각 Encoding과 Calibrating step의 해이다. $$\hat{X}$$와 $$\hat{Y}$$는 모두 test set의 데이터를 가리킨다.
+Validating step은 위 각 최적화 문제의 오차들 사이의 trade-off를 조절해 $$L^{m}$$과 $$L^{p}$$를 찾는 과정이다.
+
+$$\epsilon_{m} = ||\hat{X}-F^{m}_{W^{\ast}_{m}}(\hat{X})||^{2}_{2}$$ and $$\epsilon_{p} = ||\hat{Y}-F^{p}_{W^{\ast}_{p}}(\hat{X})||^{2}_{2}$$  
+
+$$W^{\ast}_{m}$$ 와 $$W^{\ast}_{p}$$는 각각 Encoding과 Calibrating step의 해이다. $$\hat{X}$$와 $$\hat{Y}$$는 모두 test set의 데이터를 가리킨다.
 
 ## Verifying
 Validating step에서 찾은 적절한 regulatisation을 사용해 실제 'Market Map'과 'Portfolio Map'을 찾는 과정이다. 논문에선 앞서 Encoding step에서 정한 n (non-communal stock의 갯수)를 regularisation의 척도로 보고 out-of-sample accuracy와의 그래프를 그렸다.
@@ -54,7 +58,7 @@ Validating step에서 찾은 적절한 regulatisation을 사용해 실제 'Marke
 Activation function으로 자주 쓰이는 함수를 보면, 대부분의 non-linearity는 수평선과 기울기가 있는 직선으로 이루어져 있다. 물론 모든 점에서 미분 가능한 부드러운 함수도 많지만 직선과 수평선의 조합으로 어느정도 나타낼 수 있다. 이는 옵션의 payoff의 조합으로 나타낼 수 있는 것이다. 풋과 콜을 조합하면 tanh의 모양이 나오고, ReLU는 그저 콜의 payoff 함수와 동일하게 생겼다. 게다가 Feller(1971)에 따르면 max-layer의 합성은 한개의 max-sum layer와 동일한 것이다. 즉 ReLU를 사용한 깊은 뉴럴넷의 결과값은 여러 옵션의 조합으로 나타낼 수 있는 것이다.  
 논문에서 1개의 인덱스와 그 구성 종목 중 2개의 종목을 예시로 들고 있는데, 그 구성종목을 ReLU를 사용하여 조합하면 인덱스의 drawdown을 잡을 수 있다는 것을 보여준다. ReLU 등을 사용한 다층 함수 구조가 시장의 정보를 효율적으로 담아낼 수 있다고 주장하고 있는 것이다. (설명이 더 필요하다.)
 
-#실험
+# 실험
 2012년 1월에서 2016년 4월 사이 Blackrock의 IBB(iShares NASDAQ Biotechnology Index)의 수익률과 해당 지표를 구성하는 종목들의 수익률을 데이터로 사용했다. Encoding과 Calibration step에는 2012년 1월에서 2013년 12월 사이의 데이터를, Validation과 Verification step에는 2014년 1월에서 2016년 4월 사이의 데이터를 사용했다.  
 오토인코더의 구조는 5개의 뉴런으로 이루어진 1개의 은닉층을 포함하게 구성하였다.
 
