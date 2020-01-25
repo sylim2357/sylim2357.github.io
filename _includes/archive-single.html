@@ -22,13 +22,6 @@
           {% endif %}
           alt="">
       </div>
-    {% endif %}
-    {% if post.categories[0] %}
-    {% for category in post.categories %}
-      <p href="{{ category }}" class="archive__item-excerpt" itemprop="description" rel="permalink">{{ category }}</p>
-      <!-- {% include category-list.html %} -->
-    {% endfor %}
-    {% endif %}
     <h2 class="archive__item-title" itemprop="headline">
       {% if post.link %}
         <a href="{{ post.link }}">{{ title }}</a> <a href="{{ post.url | relative_url }}" rel="permalink"><i class="fas fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
@@ -37,7 +30,13 @@
       {% endif %}
     </h2>
     {% if post.date %}
-      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> {{ post.date | date: "%B %d %Y" }}</p>
+      <p class="page__meta"><i class="far fa-fw fa-calendar-alt" aria-hidden="true"></i> {{ post.date | date: "%B %d %Y" }}
+        {% endif %}
+        {% if post.categories[0] %}
+        {% for category in post.categories %} {{ category }}
+        {% endfor %}
+        {% endif %}
+      </p>
     {% endif %}
     {% if post.excerpt %}<p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify | strip_html | truncate: 160 }}</p>{% endif %}
   </article>
