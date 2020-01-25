@@ -42,6 +42,7 @@ $$F^{m}_{W}(X)$$은 input인 수익률($$X$$)을 reconstruct하는 함수이며,
 
 ## Calibrating
 Calibrating step는 1번의 결과물인 시장의 정보를 사용하여 목표 수익률($$Y$$)을 만들어내는 과정이다. 이를 'Portfolio Map', $$F^{p}_{W}(X)$$를 찾는다고 한다.  
+
 $$\underset{W}{\text{min}}||Y-F^{p}_{W}(X)||^{2}_{2} \quad \text{subject to} \quad ||W|| \leq L^{p}$$
 
 ## Validating
