@@ -35,17 +35,17 @@ Risk-return trade-off의 개념을 딥러닝 기반의 포트폴리오 구축에
 # 4 Steps of Deep Portfolio Theory
 ## Encoding
 Encoding step의 목표는 일종의 전처리로서, 시장의 정보를 압축하는 'Market Map', $$F^{m}_{W}(X)$$를 찾는 것이다. 주어진 universe(혹은 index, 같은말임)을 잘 추적하는 새로운 representation을 찾는 것이라고 이해할 수 있다. 아래의 최적화 문제를 풀어 찾는다.  
-$$\underset{W}{\text{min}}||X-F^{m}_{W}(X)||^{2}_{2} \text{subject to} ||W|| \leq L^{m}$$  
+$$\underset{W}{\text{min}}||X-F^{m}_{W}(X)||^{2}_{2} \quad \text{subject to} \quad ||W|| \leq L^{m}$$  
 $$F^{m}_{W}(X)$$은 input인 수익률($$X$$)을 reconstruct하는 함수이며, 이 논문에선 오토인코더를 사용한다. 각 종목의 수익률을 얼마나 잘 reconstruct하는지(communal information)를 계산한 다음, well-reconstructed 10개와 least well-reconstructed n개를 뽑아 다음 단계를 진행한다.
 
 ## Calibrating
 Calibrating step는 1번의 결과물인 시장의 정보를 사용하여 목표 수익률($$Y$$)을 만들어내는 과정이다. 이를 'Portfolio Map', $$F^{p}_{W}(X)$$를 찾는다고 한다.  
-$$\underset{W}{\text{min}}||Y-F^{p}_{W}(X)||^{2}_{2} \text{subject to} ||W|| \leq L^{p}$$
+$$\underset{W}{\text{min}}||Y-F^{p}_{W}(X)||^{2}_{2} \quad \text{subject to} \quad ||W|| \leq L^{p}$$
 
 ## Validating
 Validating step은 위 각 최적화 문제의 오차들 사이의 trade-off를 조절해 $$L^{m}$$과 $$L^{p}$$를 찾는 과정이다.  
-$$\epsilon_{m} = ||\^{X}-F^{m}_{W^{\*}_{m}}(\^{X})||^{2}_{2}$$ and $$\epsilon_{p} = ||\^{Y}-F^{p}_{W^{\*}_{p}}(\^{X})||^{2}_{2}$$  
-$$W^{\*}_{m}$$ 와 $$W^{\*}_{p}$$는 각각 Encoding과 Calibrating step의 해이다.
+$$\epsilon_{m} = ||\hat{X}-F^{m}_{W^{\*}_{m}}(\hat{X})||^{2}_{2}$$ and $$\epsilon_{p} = ||\hat{Y}-F^{p}_{W^{\*}_{p}}(\hat{X})||^{2}_{2}$$  
+$$W^{\*}_{m}$$ 와 $$W^{\*}_{p}$$는 각각 Encoding과 Calibrating step의 해이다. $$\hat{X}$$와 $$\hat{Y}$$는 모두 test set의 데이터를 가리킨다.
 
 ## Verifying
 Validating step에서 찾은 적절한 regulatisation을 사용해 실제 'Market Map'과 'Portfolio Map'을 찾는 과정이다. 논문에선 앞서 Encoding step에서 정한 n (non-communal stock의 갯수)를 regularisation의 척도로 보고 out-of-sample accuracy와의 그래프를 그렸다.
