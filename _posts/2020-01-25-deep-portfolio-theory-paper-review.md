@@ -47,7 +47,7 @@ $$\underset{W}{\text{min}}||Y-F^{p}_{W}(X)||^{2}_{2} \quad \text{subject to} \qu
 ## Validating
 Validating step은 위 각 최적화 문제의 오차들 사이의 trade-off를 조절해 $$L^{m}$$과 $$L^{p}$$를 찾는 과정이다.
 
-$$\epsilon_{m} = ||\hat{X}-F^{m}_{W^{\ast}_{m}}(\hat{X})||^{2}_{2}$$ and $$\epsilon_{p} = ||\hat{Y}-F^{p}_{W^{\ast}_{p}}(\hat{X})||^{2}_{2}$$  
+$$\epsilon_{m} = \Vert\hat{X}-F^{m}_{W^{\ast}_{m}}(\hat{X})\Vert^{2}_{2}$$ and $$\epsilon_{p} = \Vert\hat{Y}-F^{p}_{W^{\ast}_{p}}(\hat{X})\Vert^{2}_{2}$$  
 
 $$W^{\ast}_{m}$$ 와 $$W^{\ast}_{p}$$는 각각 Encoding과 Calibrating step의 해이다. $$\hat{X}$$와 $$\hat{Y}$$는 모두 test set의 데이터를 가리킨다.
 
