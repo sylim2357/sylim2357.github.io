@@ -23,14 +23,13 @@
           alt="">
       </div>
     {% endif %}
+    {% if post.categories[0] %}
+    {% for category in post.categories %}
+      <p href="{{ category }}" class="archive__item-excerpt" itemprop="description" rel="permalink">{{ category }}</p>
+      <!-- {% include category-list.html %} -->
+    {% endfor %}
+    {% endif %}
     <h2 class="archive__item-title" itemprop="headline">
-      {% if post.categories[0] %}
-      {% for category in post.categories %}
-        <a href="{{ category }}" class="archive__item-excerpt" itemprop="description" rel="permalink">{{ category }}</a>
-        <!-- {% include category-list.html %} -->
-      {% endfor %}
-      <p>
-      {% endif %}
       {% if post.link %}
         <a href="{{ post.link }}">{{ title }}</a> <a href="{{ post.url | relative_url }}" rel="permalink"><i class="fas fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
       {% else %}
