@@ -18,6 +18,7 @@ last_modified_at: 2020-01-31T01:49:00+09:00
 
 세계적인 금융 정보 서비스 월스트리트저널과 블룸버그에도 소개가 되었던 논문.
 [블룸버그 기사](https://www.bloomberg.com/news/articles/2019-06-25/past-present-future-tense-of-stock-talk-weighs-on-returns)
+
 EBS대학교(그 EBS가 아니고 European Business School이 대학교로 승격된 기관) 교수 Rasa Karapandza의 연구 성과로, 한줄로 요약하자면
 
 > 10-K에 미래 시제 표현이 적게 들어간 기업의 주식은 연평균 5%의 추가수익을 낸다.
@@ -40,12 +41,12 @@ EBS대학교(그 EBS가 아니고 European Business School이 대학교로 승�
 ## Variable
 단어의 개수를 센다고 표현했는데, 아무 사업보고서나 갖다놓고 그저 한개, 두개 손으로 세서 숫자를 써놓으면 끝이 아니다. 일단 모든 기업이 사업보고서를 약속하고 한날한시에 발표하는 것이 아니다. 각자 정한 회계년도가 끝나는 날로부터 90일 이내에 발표하면 되는 것이다. 저자는 역시 Fama-French와 같이 7월 1일을 기준일로 잡고 이전 1년동안 발표된 사업보고서를 이용해 이후 1년동안 투자하는 방식을 취하였다. 매년 6월 30일에 발표되는 Moody's manual에 따라서 book equity를 사용하기 때문에 7월 1일을 기준일로 삼아야 lookahead bias가 없다는 것. 그렇다면 그들이 사용한 변수의 계산식을 보자.
 
-$$Frequency \ of \ Future \ Tense_{i,t-1} = \left\{
+$Frequency \ of \ Future \ Tense_{i,t-1} = \left\{
                 \begin{array}{cc}
                   \frac{1+\log{(Number \ of \ will,shall,going \ to_{i,t-1}})}{1+\log{(Number \ of \ Words_{i,t-1})}} & if \quad (Number \ of \ will,shall,going \ to_{i,t-1}) \ge 1\\
                   0 & otherwise\\
                 \end{array}
-              \right.$$
+              \right.$
 
 단순히 개수를 세기보단 전체 문서의 길이에서 해당 글자가 차지하는 비율을 나타내기 위해 전체 문서의 글자 수로 나누어 준 모습이다. Robustness check을 위해서 분모에 글자수 대신 10-K text파일의 용량을 쓰기도 했다. ($$Filesize_{i,t-1}$$ instead of $$Number \ of \ Words_{i,t-1}$$) 글자 수와 크게 다르지 않을 것 같지만 쨌든 했다고 한다.
 
@@ -58,7 +59,7 @@ $$Frequency \ of \ Future \ Tense_{i,t-1} = \left\{
 회사의 크기에 따라서 영향이 있나 하고 표를 그려봤는데, Market Cap기준 하위 20%, 20%-50%, 그리고 median보다 상위종목들만 따로 봤을 때에도 역시 Low 가 High보다 평균적으로 높다. Value-weighted와 Equal-weighted 모두에서 같은 결과가 나왔다. 기본 세팅은 microcap(하위 20%) 종목은 제거한 것으로 보인다.
 
 ## Risk-Adjusted Returns
-위의 결과가 혹시 이미 알려진 리스크에 대한 보상으로서 나타난 수익률은 아닐까? 라는 의문을 품은 듯 하다. 타당한 말이다. Future tense expression개수 세가지고 유레카! 했는데 알고보니 사람들이 이미 알고있는 리스크에 대한 proxy였다면? 새로운 정보를 추가하는게 아니기 때문에 저자의 주장은 근거를 잃게 된다.
+위의 결과가 혹시 이미 알려진 리스크에 대한 보상으로서 나타난 수익률은 아닐까? 라는 의문을 품은 듯 하다. 타당한 말이다. Future tense expression개수 세가지고 유레카! 했는데 알고보니 사람들이 이미 알고있는 리스크에 대한 proxy였다면? 새로운 정보를 추가하는게 아니기 때문에 저자의 주장은 근거를 잃게 된다. 그리고 우울감에 빠질수도.
 
 이를 위해 저자는 선배들의 방법을 따라하는데, Future Tense로 만들어진 수익률(long-short 수익률)이 얼마나 기존 팩터로 설명이 되나 보기 위해 Fama-French를 참고하여 선형회귀(!!)를 했다. 알려진 팩터를 independent variable로 두고 회귀를 한 다음에 intercept의 통계적 유의성을 보는 것. 기존 팩터의 입장에선 mispricing이라고 주장할 수 있을 것이고 저자의 입장에선 새로운 팩터를 발견했을지도 모른다고 주장할 수 있는 것이다. 이 '알려진 팩터'를 위해 저자는 다음의 4가지 모델을 사용하였다: CAPM, Fama-French 3 factor model, Carhart 4 factor model, Carhart 6 factor model 또한, Fama-French(2008)에서 선보인 비모수 기법도 사용했다는데, 각 팩터의 matching portfolio를 사용하는 방법인 것 같은데 이부분은 공부가 더 필요하다..
 
