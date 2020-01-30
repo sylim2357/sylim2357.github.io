@@ -1,6 +1,6 @@
 ---
-title:  "Deep Portfolio Theory, 2016"
-excerpt: "We construct a deep portfolio theory. By building on Markowitz's classic risk-return trade-off, we develop a self-contained four-step routine of encode, calibrate, validate and verify to formulate an automated and general portfolio selection process. At the heart of our algorithm are deep hierarchical compositions of portfolios constructed in the encoding step. The calibration step then provides multivariate payouts in the form of deep hierarchical portfolios that are designed to target a variety of objective functions. The validate step trades-off the amount of regularization used in the encode and calibrate steps. The verification step uses a cross validation approach to trace out an ex post deep portfolio efficient frontier. We demonstrate all four steps of our portfolio theory numerically."
+title:  "Deep Portfolio Theory"
+excerpt: "Heaton, J. B., N. G. Polson, and Jan Hendrik Witte. "Deep learning for finance: deep portfolios." Applied Stochastic Models in Business and Industry 33.1 (2017): 3-12."
 toc: true
 toc_sticky: true
 
