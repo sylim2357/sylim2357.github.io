@@ -1,6 +1,6 @@
 ---
 title:  "Deep Portfolio Theory"
-excerpt: ""
+excerpt: "Heaton, J. B., N. G. Polson, and Jan Hendrik Witte. \"Deep learning for finance: deep portfolios.\" Applied Stochastic Models in Business and Industry 33.1 (2017): 3-12."
 toc: true
 toc_sticky: true
 

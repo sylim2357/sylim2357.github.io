@@ -1,6 +1,6 @@
 ---
 title:  "Stock Returns and Future Tense Language in 10-K Reports"
-excerpt: "Karapandza, Rasa. "Stock returns and future tense language in 10-K reports." Journal of Banking & Finance 71 (2016): 50-61."
+excerpt: "Karapandza, Rasa. \"Stock returns and future tense language in 10-K reports.\" Journal of Banking & Finance 71 (2016): 50-61."
 toc: true
 toc_sticky: true
 
