@@ -41,12 +41,12 @@ EBS대학교(그 EBS가 아니고 European Business School이 대학교로 승�
 ## Variable
 단어의 개수를 센다고 표현했는데, 아무 사업보고서나 갖다놓고 그저 한개, 두개 손으로 세서 숫자를 써놓으면 끝이 아니다. 일단 모든 기업이 사업보고서를 약속하고 한날한시에 발표하는 것이 아니다. 각자 정한 회계년도가 끝나는 날로부터 90일 이내에 발표하면 되는 것이다. 저자는 역시 Fama-French와 같이 7월 1일을 기준일로 잡고 이전 1년동안 발표된 사업보고서를 이용해 이후 1년동안 투자하는 방식을 취하였다. 매년 6월 30일에 발표되는 Moody's manual에 따라서 book equity를 사용하기 때문에 7월 1일을 기준일로 삼아야 lookahead bias가 없다는 것. 그렇다면 그들이 사용한 변수의 계산식을 보자.
 
-$Frequency \ of \ Future \ Tense_{i,t-1} = \left\{
+$$Frequency \ of \ Future \ Tense_{i,t-1} = \left\{
                 \begin{array}{cc}
                   \frac{1+\log{(Number \ of \ will,shall,going \ to_{i,t-1}})}{1+\log{(Number \ of \ Words_{i,t-1})}} & if \quad (Number \ of \ will,shall,going \ to_{i,t-1}) \ge 1\\
                   0 & otherwise\\
                 \end{array}
-              \right.$
+              \right.$$
 
 단순히 개수를 세기보단 전체 문서의 길이에서 해당 글자가 차지하는 비율을 나타내기 위해 전체 문서의 글자 수로 나누어 준 모습이다. Robustness check을 위해서 분모에 글자수 대신 10-K text파일의 용량을 쓰기도 했다. ($$Filesize_{i,t-1}$$ instead of $$Number \ of \ Words_{i,t-1}$$) 글자 수와 크게 다르지 않을 것 같지만 쨌든 했다고 한다.
 
