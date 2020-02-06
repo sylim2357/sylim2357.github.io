@@ -40,11 +40,11 @@ $$R_{i} = a_{i} + u_{i1}\hat{F_{1}} + u_{i2}\hat{F_{2}} + \cdots + u_{iL}\hat{F_
 # Model & Data
 결국 저자가 찾고자 하는 함수는 다음과 같다.
 
-$$R_{i} = f(u_{i1} + u_{i2} + \cdots + u_{iL}) + e_{i}$$
+$$R_{i} = f(u_{i1}, u_{i2}, \cdots, u_{iL}) + e_{i}$$
 
 여기서 각 $$u_{il}$$은 수익률을 예측하고자 하는 기간의 각 $$\hat{F_{l}}$$에 해당하는 factor loading이다. $$\hat{F_{l}}$$은 historical mean으로 근사했다.
 
-그리하여 팩터-수익률간의 새로운 관계를 찾기 위해 1989년~1995년 사이에 발생된 약 1300여개 종목의 월별 수익률($$R_{i}$$)을 사용했다. BARRA HiCap 종목 universe를 사용했다고 한다. 팩터($$F_{l}$$)로는 ([Fama-French, 1992][https://onlinelibrary.wiley.com/doi/full/10.1111/j.1540-6261.1992.tb04398.x]) 에서 사용한 P/E, P/B 등을 사용했다.  
+그리하여 팩터-수익률간의 새로운 관계를 찾기 위해 1989년~1995년 사이에 발생된 약 1300여개 종목의 월별 수익률($$R_{i}$$)을 사용했다. BARRA HiCap 종목 universe를 사용했다고 한다. 팩터($$F_{l}$$)로는 ([Fama-French, 1992](https://onlinelibrary.wiley.com/doi/full/10.1111/j.1540-6261.1992.tb04398.x)) 에서 사용한 P/E, P/B 등을 사용했다.  
 모델 스펙은 다음과 같다.
 
 2층 뉴럴넷
