@@ -8,6 +8,7 @@ categories:
   - Paper Review
 tags:
   - Finance
+  - Portfolio Management
   - Machine Learning
   - Autoencoder
 last_modified_at: 2020-01-25T20:17:00+09:00
