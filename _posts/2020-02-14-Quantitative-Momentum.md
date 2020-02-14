@@ -16,7 +16,7 @@ Any kind of feedback are welcome.
 
 [Amazon](https://www.amazon.com/Quantitative-Momentum-Practitioners-Momentum-Based-Selection/dp/111923719X)
 
-A great book covering basic understandings and applications of the momentum factor. The authors spend half of the book asserting why momentum factor works, and the rest constructing the 'quantitative momentum' factor. They claim it is 'effective', that saying the factor construction procedure is reasonable and backed-up both empirically and theoretically in a logical way.
+A great book covering basic understandings and applications of the momentum factor. The authors spend half of the book asserting why momentum factor works, and the rest constructing the 'quantitative momentum' strategy. They claim it is 'effective', that saying the construction procedure is reasonable and backed-up both empirically and theoretically in a logical way.
 
 # Momentum?
 Momentum factor-based investing falls into the realm of technical analysis, which strictly does not allow any intervention of the fundamentals. The only material is price, precisely the return. The 'momentum' of a stock can be measured in mainly two ways. Time-series momentum, or absolute momentum is measured on independent stock price of individual stock. Whereas cross-sectional momentum, or relative strength takes account of relative change in price across the universe of stocks. The authors appropriately make use of these two momentums towards their strategy.
