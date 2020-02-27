@@ -1,6 +1,6 @@
 ---
 title:  "Quantitative Momentum: A Practitioner's Guide to Building a Momentum-Based Stock Selection System"
-excerpt: "Gray, Wesley R., Vogel, Jack R. \"Quantitative Momentum: A Practitioner's Guide to Building a Momentum-Based Stock Selection System\" Wiley. 2016"
+excerpt: "Gray, Wesley R., Vogel, Jack R. Wiley. 2016"
 toc: true
 toc_sticky: true
 

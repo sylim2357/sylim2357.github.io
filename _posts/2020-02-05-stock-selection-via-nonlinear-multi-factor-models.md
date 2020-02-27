@@ -8,6 +8,7 @@ categories:
   - Paper Review
 tags:
   - Machine Learning
+  - Neural Network
   - Finance
   - Market
   - Trading
