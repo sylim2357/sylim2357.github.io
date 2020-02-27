@@ -12,6 +12,8 @@ tags:
   - Trading
 last_modified_at: 2020-02-28T00:20:00+09:00
 ---
+[Amazon](https://www.amazon.com/Dual-Momentum-Investing-Innovative-Strategy/dp/0071849440)
+
 이전에 리뷰했던 Quantitative Momentum 작가가 극찬한 책이라서 사서 읽어봄.
 
 결과적으로는 Quantitative Momentum이나 본서 둘 중 한 권만 읽어도 될 것 같다는 생각임. 이 책이 먼저 나왔음에도 QM을 먼저 읽어서 스포일 당한 것일 수도 있지만 쨌든 처음 모멘텀에 대해서 배울 수 있었던 QM때의 재미는 없었음.
