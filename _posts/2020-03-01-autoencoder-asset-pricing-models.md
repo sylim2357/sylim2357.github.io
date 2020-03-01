@@ -84,9 +84,9 @@ CRSP에서 NYSE, AMEX, NASDAQ의 모든 종목에 대해 1957년 3월부터 2016
 ## Performance Evaluation
 KPS에서는 test data에 대한 total $$R^2$$와 pred $$R^2$$를 사용하였기 때문에 이 논문에서도 같은 metric을 사용하였다. 각 metric의 정의는 다음과 같다.
 
-$$R^2_(total) = 1- \frac{\sum_{(i,t) \in OOS}(r_{i,t} - \hat{\beta}_{i,t-1}'\hat{f}_{t})^2}{\sum_{(i,t) \in OOS}r_{i,t}^2}$$
+$$R^2_{total} = 1- \frac{\sum_{(i,t) \in OOS}(r_{i,t} - \hat{\beta}_{i,t-1}'\hat{f}_{t})^2}{\sum_{(i,t) \in OOS}r_{i,t}^2}$$
 
-$$R^2_(pred) = 1- \frac{\sum_{(i,t) \in OOS}(r_{i,t} - \hat{\beta}_{i,t-1}'\hat{\lambda}_{t-1})^2}{\sum_{(i,t) \in OOS}r_{i,t}^2}$$
+$$R^2_{pred} = 1- \frac{\sum_{(i,t) \in OOS}(r_{i,t} - \hat{\beta}_{i,t-1}'\hat{\lambda}_{t-1})^2}{\sum_{(i,t) \in OOS}r_{i,t}^2}$$
 
 $$\hat{\lambda}_{t-1}$$은 t-1까지 $$\hat{f}$$의 평균값이다.
 
