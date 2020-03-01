@@ -44,7 +44,7 @@ $$\beta(z_{i,t-1})' = z_{i,t-1}'\Gamma$$ -- (2)
 ## Conditional Autoencoder and IPCA
 비지도학습 접근법을 사용하면 시장 구조 정보를 효율적으로 학습할 수 있지만, 수익률 이외의 데이터를 conditioning information으로 사용할 여지가 없다는 단점이 있다. KPS는 외부 정보를 사용해 fator loading을 종목 특성의 선형 함수로 추정하여 동적으로 업데이트 하였다. (IPCA 사용) 이렇게 종목 특성 등 외부 정보를 사용하게 되면 factor loading을 더 정확히 추정할 수 있을 뿐 아니라 그 loading을 가지는 잠재 팩터의 질도 향상됨을 보였다. 본 논문은 IPCA 사용을 통해 가정한 beta와 z간의 선형 관계를 일반화여 아래의 모델을 제안하였다.
 
-![conditional_autoencoder](assets\images\autoencoder-asset-pricing-models-01.jpg)
+![conditional_autoencoder](assets/images/autoencoder-asset-pricing-models-01.jpg)
 
 크게 왼쪽과 오른쪽 두 부분으로 나누어져 있는 것을 볼 수 있다. 합쳐지기 전 왼쪽 모델은 factor loading을 계산하는 모델이고 오른쪽에 있는 것은 latent fator를 계산하는 모델이다. 맨 마지막 (제일 위쪽)에선 (1)의 수식처럼 latent factor와 그 loading을 dot product하여 수익률을 재현한다.
 
