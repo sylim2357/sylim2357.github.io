@@ -111,11 +111,11 @@ author:
   avatar           : "/assets/images/logo_test.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "일 벌리기 좋아함"
   #location         : ""
-  email            : "sylim2357@dm.snu.ac.kr"
+  email            : "sylim2357@gmail.com"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      url: mailto:sylim2357@dm.snu.ac.kr
+      url: mailto:sylim2357@gmail.com
     - label: "Website"
       icon: "fas fa-fw fa-link"
       url: "https://sylim2357.github.io"
