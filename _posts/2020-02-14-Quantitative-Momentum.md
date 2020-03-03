@@ -24,9 +24,19 @@ Momentum factor-based investing falls into the realm of technical analysis, whic
 # Does momentum work?
 It starts with the everlasting argument of mispricing vs. risk aspect of investment strategies to share their thoughts regarding 3 factors: value, growth and momentum. The main theme of the book runs along with behavioural finance theories, which at the end of the day support the argument on the stake of mispricing in the above factors, to a certain degree. They found evidence on the association between the value factor and overreaction (a psychological effect) of the market to bad news, therefore the momentum factor being a 'cousin' of the value factor. Furthermore, they insist that momentum stocks can provide a far better diversification options than growth stocks.
 
-From two pillars of behavioural finance, investor psychology and limits to arbitrage, the authors suggest a long-term performance equation: sustainable alpha + sustainable investors = long-term performance. The momentum factor exploits an underreaction of the market to good news (investor psychology => alpha), which is not readily susceptible for big institutions as the twisted incentives structure holds them from taking the career risk (limits to arbitrage => investors). Which to me seems like a behavioural finance version of risk-return tradeoff.
+From two pillars of behavioural finance, investor psychology and limits to arbitrage, the authors suggest a long-term performance equation: sustainable alpha + sustainable investors = long-term performance. The momentum factor exploits an underreaction of the market to good news (investor psychology => alpha), which is not readily susceptible for big institutions as the twisted incentives structure holds them from taking the career risk (limits to arbitrage => investors). Which to me seems like a behavioural finance version of risk-return tradeoff. Let's take a deeper look.
 
-Therefore, as long as 1) the investors suffer from behavioural bias, and 2) the fund managers are short-sighted due to an inefficient incentives structure, the investment based on momentum factor will take the opportunity. Assuming we ourselves do not correspond to any one of the above.
+![two-pillars-of-behavioural-finance](/assets/images/quantitative-momentum-01.JPG)
+
+- Limits to Arbitrage
+
+The EMH argues that there are so many arbitrageurs that the fundamentals are reflected to the price immediately, or somewhat quickly therefore the mispricings are ephemeral. However in real market pure arbitrage opportunities rarely, if ever, exist. What we refer to arbitrage these days is actually risk arbitrage that engages some sort of risk which is absent in a theoretical pricing model. (market friction, career risk etc)
+
+- Investor Psychology
+
+The story of system 1 and system 2 suggested by Daniel Kahneman clearly shows that human brain might be useful to keep them alive in the jungle but not necessarily in the financial market. Behavioural biases, including disposition effect, confirmation bias or representative bias play a major role.
+
+This brings us to the situation where smart investors can't take advantage of irrational investors. Therefore, as long as 1) the investors suffer from behavioural bias, and 2) the fund managers are short-sighted due to an inefficient incentives structure, the investment based on momentum factor will take the opportunity. Assuming we ourselves do not correspond to any of the above.
 
 # Quantitative Momentum?
 They focus on mainly 3 external factors when utilising momentum for stock selection. Those are 'lookback window', path, and seasonality.
