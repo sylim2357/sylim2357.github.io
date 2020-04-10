@@ -35,8 +35,8 @@ JP Morgan 연구진이 AAAI에 발표한 논문. LOB 데이터로 RL agent를 �
 
 이를 타개하기 위해 호가데이터를 넣고 바로 거래전략을 학습하는 RL agent를 만드려는 시도가 있었는데, 대다수의 경우 위의 1. 거래전략을 자동으로, 또 최적으로 수행하는 agent만을 만든 것이지, 이 agent를 테스트하기 위해서 사용한 시뮬레이터는 전통적인 시뮬레이터를 사용했다는 단점이 있었다. 이 논문에서는 그 두가지를 모두 데이터에 기반해 학습할 수 있는 방법을 제시한다.
 
-- State space뿐 아니라 reward도 같이 모델링하기 위해 latent representation learning을 이용하였다.
-- 이 모델에서 거래전략을 학습한 RL agent는 실제로 좋은 성적(\$)을 보였다.
+* State space뿐 아니라 reward도 같이 모델링하기 위해 latent representation learning을 이용하였다.
+* 이 모델에서 거래전략을 학습한 RL agent는 실제로 좋은 성적(\$)을 보였다.
 
 # Background
 짧게 3가지 개념을 살펴보자.
@@ -56,25 +56,25 @@ JP Morgan 연구진이 AAAI에 발표한 논문. LOB 데이터로 RL agent를 �
 
 ![MDP Formulation](/assets/images/model-based-rl-for-predictions-and-control-for-lob-01.JPG)
 
-- State space ($$\mathcal{S}$$): $$s_{t} = \{z_{t}, u_{t}, po_{t}\}$$
+* State space ($$\mathcal{S}$$): $$s_{t} = \{z_{t}, u_{t}, po_{t}\}$$
 
 $$z_{t} = ae(ob_{t-T:t})$$: $$T$$시간동안의 호가 데이터의 latent representation. 밑에 나올 시장 상황의 인코딩 정보이다.
 $$u_{t}$$: $$T$$시간동안 일어난 모든 trade prints 데이터
 $$po_{t}$$: 시각 $$t$$에 RL agent의 포지션. 해당 주식을 얼마나 들고있느냐. $$(-po_{max}, po_{max})$$로 유계임.
 
-- Action space ($$\mathcal{A}$$): $$a_{t} = \pm q$$
+* Action space ($$\mathcal{A}$$): $$a_{t} = \pm q$$
 
 $$t$$ 시각에서 내리는 결정. 해당 주식을 얼마나($$q$$) 살거냐(팔거냐)로, 모든 가격은 위에서 정의한 중간가격으로 한다.
 
-- Reward function ($$\mathcal{R}$$): $$\Delta mid_{s_{t},s_{t+1}} \times po_{t}$$
+* Reward function ($$\mathcal{R}$$): $$\Delta mid_{s_{t},s_{t+1}} \times po_{t}$$
 
-$$t$$와 $$t+1$$사이에 버는 돈.(단순 PnL) $$\Delta mid_{s_{t},s_{t+1}}$$는 상태 $$s_{t}$$와 $$s_{t+1}$$에 해당하는 평균중간가격의 차이를 나타내고 그 가격 차이만큼 RL agent의 포지션($$po_{t}$$)을 곱해서 계산한다.
+$$t$$와 $$t+1$$사이에 버는 돈. (단순 PnL) $$\Delta mid_{s_{t},s_{t+1}}$$는 상태 $$s_{t}$$와 $$s_{t+1}$$에 해당하는 평균중간가격의 차이를 나타내고 그 가격 차이만큼 RL agent의 포지션($$po_{t}$$)을 곱해서 계산한다.
 
-- Transitions ($$\mathcal{T}(s_{t+1}\|s_{t},a_{t})$$)
+* Transitions ($$\mathcal{T}(s_{t+1}|s_{t},a_{t})$$)
 
 과거 데이터에서 볼 수 있는 상태 전이 궤적을 보고 환경 모델을 훈련한다. 특히 체결 데이터에 집중해서 각 체결 이벤트를 전이에서 타겟 action으로 삼는다. 다음 상태로 옮겨갔을 때 그 같은 action이 상태의 일부분으로 편입될 수도 있다.
 
-- Initial state ($$\rho_{0}$$)
+* Initial state ($$\rho_{0}$$)
 
 초기상태는 상태 데이터셋에서 균등분포로 샘플링했다.
 
