@@ -56,21 +56,26 @@ JP Morgan 연구진이 AAAI에 발표한 논문. LOB 데이터로 RL agent를 �
 
 ![MDP Formulation](/assets/images/model-based-rl-for-predictions-and-control-for-lob-01.JPG)
 
-- State space ($$\mathcal{S}$$): $$s_{t} = {z_{t}, u_{t}, po_{t}}$$
+- State space ($$\mathcal{S}$$): $$s_{t} = \{z_{t}, u_{t}, po_{t}\}$$
+
 $$z_{t} = ae(ob_{t-T:t})$$: $$T$$시간동안의 호가 데이터의 latent representation. 밑에 나올 시장 상황의 인코딩 정보이다.
-$$u_{t}$$: $$T$$시간동안 일어난 모든 trade prints데이터
+$$u_{t}$$: $$T$$시간동안 일어난 모든 trade prints 데이터
 $$po_{t}$$: 시각 $$t$$에 RL agent의 포지션. 해당 주식을 얼마나 들고있느냐. $$(-po_{max}, po_{max})$$로 유계임.
 
 - Action space ($$\mathcal{A}$$): $$a_{t} = \pm q$$
+
 $$t$$ 시각에서 내리는 결정. 해당 주식을 얼마나($$q$$) 살거냐(팔거냐)로, 모든 가격은 위에서 정의한 중간가격으로 한다.
 
 - Reward function ($$\mathcal{R}$$): $$\Delta mid_{s_{t},s_{t+1}} \times po_{t}$$
+
 $$t$$와 $$t+1$$사이에 버는 돈.(단순 PnL) $$\Delta mid_{s_{t},s_{t+1}}$$는 상태 $$s_{t}$$와 $$s_{t+1}$$에 해당하는 평균중간가격의 차이를 나타내고 그 가격 차이만큼 RL agent의 포지션($$po_{t}$$)을 곱해서 계산한다.
 
 - Transitions ($$\mathcal{T}(s_{t+1}|s_{t},a_{t})$$)
+
 과거 데이터에서 볼 수 있는 상태 전이 궤적을 보고 환경 모델을 훈련한다. 특히 체결 데이터에 집중해서 각 체결 이벤트를 전이에서 타겟 action으로 삼는다. 다음 상태로 옮겨갔을 때 그 같은 action이 상태의 일부분으로 편입될 수도 있다.
 
 - Initial state ($$\rho_{0}$$)
+
 초기상태는 상태 데이터셋에서 균등분포로 샘플링했다.
 
 ## Data
@@ -88,7 +93,7 @@ $$t$$와 $$t+1$$사이에 버는 돈.(단순 PnL) $$\Delta mid_{s_{t},s_{t+1}}$$
 ### Transition Model (RNN-MDN)
 state-action 전이 함수 $$\mathcal{P}(s'|s,a)$$를 모델링한 것이다. 시장이 변하는 것과 주문이 시장에 미치는 영향을 모델링한 것이라고 보면 된다. 먼저 RNN을 사용하여 장단기 영향을 모델링하고 이 RNN을 MDN (Mixture Density Network)과 결합한다. RNN의 결과를 확률분포의 결합으로 추정하는 것이다.
 
-$$p(s'|s,a) = sum_{k=1}^{K}{w_k(s,a)\mathcal{D}(s'|\mu(s,a),\sigma_{k}^{2}(s,a))}$$
+$$p(s'|s,a) = \sum_{k=1}^{K}{w_k(s,a)\mathcal{D}(s'|\mu(s,a),\sigma_{k}^{2}(s,a))}$$
 
 여기서 $$\mathcal{D}$$는 가우시안, 베르누이 등 미리 가정하는 분포이다. 아래의 그림처럼 N개의 인풋 state를 받아서 N+1번째의 state를 예측한다.
 
@@ -103,8 +108,8 @@ $$po_{t+1}$$은 $$t+1$$시간일 때의 포지션으로, $$t$$의 포지션에�
 
 $$po_{t+1} = \left\{
                 \begin{array}{cc}
-                  min(po_{t}+|a_{t}|,po_{max}) & if a_{t} gt 0\\
-                  max(po_{t}-|a_{t}|,-po_{max}) & if a_{t} lt 0\\
+                  min(po_{t}+|a_{t}|,po_{max}) & \text{if} a_{t} & \gt 0\\
+                  max(po_{t}-|a_{t}|,-po_{max}) & \text{if} a_{t} & \lt 0\\
                 \end{array}
               \right.$$
 
@@ -118,7 +123,7 @@ Double DQN은 뉴럴넷으로 Q값을 추정하는 방법인데, 타깃 Q값을 
 
 $$L(\theta) = \mathbb{E}[(Q(s,a;\theta)-Q_{target})^{2}]$$
 
-$$Q_{target} = r+\gammaQ(s',arg\max_{a'}{Q(s',a';\theta)};\theta_{-})$$
+$$Q_{target} = r + \gamma Q(s',arg \max_{a'}{Q(s',a';\theta)};\theta_{-})$$
 
 ### PG
 Policy를 함수로 생각하고 그 모수($$\theta$$)를 직접적으로 추정한다. 그 모수를 최적화하면서 누적 reward를 최대화 하는 것을 목표로 한다. Q-learning에 비해서 value overestimation에 robust하다. 하지만 누적 reward를 계산할 때 policy 분산이 커질 수도 있다는 점은 주의해야한다. $$\theta$$를 바꿔가며 아래의 J를 최대화하는 것이다.
@@ -129,6 +134,13 @@ $$G_{t} = \sum^{H}_{t=0}\gamma^{t}t_{t}$$
 
 ### A2C
 Value-based와 PG방식을 결합한 것으로, Advantage value(A)를 기반으로 policy를 업데이트하는 Actor(A)와 TD에러에 따라 value를 업데이트 하는 Critic(C)로 이루어졌다. A2개 C한개 해서 A2C이다. Advantage Value를 쓰기때문에 policy분산이 커지지 않는다는 점과, value함수 추정을 통해 policy가 직접적으로 업데이트 된다는 점이 장점으로 꼽힌다.
+
+$$J(\theta) = \mathbb{E}_{\tau}[\sum^{H}_{t=0}log\pi(a|s,\theta)A(s,a)]$$
+
+$$A(s_{t},a_{t}) = r_{t}+\gamma V(s_+{t+1};w) - V(s_{t};w)$$
+
+$$J(w) = (r_{t} + \gamma V(s_{t+1};w)-V(s_{t};w_{-}))^{2}$$
+
 
 # Experiment
 
