@@ -159,7 +159,7 @@ Agent가 미래 상태를 안다고 가정하고 트레이딩을 진행하는 �
 ## Results
 2%의 수수료를 가정하고, 데이터 중 4일의 호가 데이터를 무작위로 선정해서 위 벤치마크와 학습시킨 RL agent를 테스트한 결과이다. RL agent는 다른 벤치마크보다 더 greedy optimal에 가까운 결과를 냈고, 사용한 RL 알고리즘 중에서는 A2C가 다른 두개의 알고리즘보다 성능이 좋았다고 한다. 분류기 기반 전략은 상당히 성적이 안좋았는데, 보합에 너무 가중치를 줘서 실제로 액션을 취하는 스테이트가 많이 없었다고. 근데 어떻게 보면 이해가 되는게 금융시장은 애초에 짧은 시간 내에서는 그렇게 많은 변동성이 없다. 그리고 랜덤워크 성향이 강해서 이전 상태를 그대로 예측하는 것이 가장 좋은 예측방법이라고 생각하는 이론도 있을 정도다. (마팅게일) 이를 위해서 1개의 state에 해당되는 시간을 늘릴 수 있겠지만 state 1개당 1개의 action을 취하는 RL agent특성상 agent의 granulity가 많이 줄어들게 되는 것이 문제점이라고 할 수 있다.
 
-![Results1](/assets/images/model-based-rl-for-predictions-and-control-for-lob-03.JPG)
+![Results1](/assets/images/model-based-rl-for-predictions-and-control-for-lob-04.JPG)
 
 비교를 좀 해봤다고 한다.
 - Momentum agent: 사고 팔고의 전환이 너무 잦다.
