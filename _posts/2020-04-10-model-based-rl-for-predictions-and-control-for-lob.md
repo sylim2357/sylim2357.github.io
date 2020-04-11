@@ -113,8 +113,8 @@ $$po_{t+1}$$은 $$t+1$$시간일 때의 포지션으로, $$t$$의 포지션에�
 
 $$po_{t+1} = \left\{
                 \begin{array}{cc}
-                  min(po_{t}+|a_{t}|,po_{max}) & \text{if} a_{t} & \gt 0\\
-                  max(po_{t}-|a_{t}|,-po_{max}) & \text{if} a_{t} & \lt 0\\
+                  min(po_{t}+|a_{t}|,po_{max}) & \text{if} & a_{t} & \gt 0\\
+                  max(po_{t}-|a_{t}|,-po_{max}) & \text{if} & a_{t} & \lt 0\\
                 \end{array}
               \right.$$
 
