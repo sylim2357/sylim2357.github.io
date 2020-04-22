@@ -64,7 +64,7 @@ $$Frequency \ of \ Future \ Tense_{i,t-1} = \left\{
 
 이를 위해 저자는 선배들의 방법을 따라하는데, Future Tense로 만들어진 수익률(long-short 수익률)이 얼마나 기존 팩터로 설명이 되나 보기 위해 Fama-French를 참고하여 선형회귀(!!)를 했다. 알려진 팩터를 independent variable로 두고 회귀를 한 다음에 intercept의 통계적 유의성을 보는 것. 기존 팩터의 입장에선 mispricing이라고 주장할 수 있을 것이고 저자의 입장에선 새로운 팩터를 발견했을지도 모른다고 주장할 수 있는 것이다. 이 '알려진 팩터'를 위해 저자는 다음의 4가지 모델을 사용하였다: CAPM, Fama-French 3 factor model, Carhart 4 factor model, Carhart 6 factor model
 
-결과는.. 99% 신회구간에서 유의하다는 것! 가장 좋은 결과인 Carhart 6 factor model과의 대비에선 연평균 7%의 추가 수익이 발생했다.  
+결과는.. 99% 신뢰구간에서 유의하다는 것! 가장 좋은 결과인 Carhart 6 factor model과의 대비에선 연평균 7%의 추가 수익이 발생했다.  
 이 외에도 Fama-French(2008)에서 선보인 비모수 기법도 사용했다는데, 각 팩터의 matching portfolio를 사용하는 방법인 것 같은데 이부분은 공부가 더 필요하다.. 뭐 이쪽 방법으로도 저자가 원하는 결과가 나왔다고 한다.
 
 # Risk vs Mispricing
