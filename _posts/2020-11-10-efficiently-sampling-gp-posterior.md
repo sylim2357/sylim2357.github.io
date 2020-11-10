@@ -39,7 +39,7 @@ $$\bm{m}_{*\mid n}=\bold{K}_{*,n}(\bold{K}_{n,n}+\sigma^2\bold{I})^{-1}\bm{y}$$
 
 $$\bold{K}_{*,*\mid n}=\bold{K}_{*,*}-\bold{K}_{*,n}(\bold{K}_{n,n}+\sigma^2\bold{I})^{-1}\bold{K}_{n,*}$$
 
-위 식의 derivation은 문일철교수님의 유튜브 비디오에 보면 설명이 되어 있다. Joint Normal Distribution을 이용한 선형대수 식 전개를 거치면 된다.
+위 식의 derivation은 [문일철교수님의 유튜브 비디오](https://www.youtube.com/watch?v=4vuweopUd_o&list=PLbhbGI_ppZIRPeAjprW9u9A46IJlGFdLn&index=37&ab_channel=AAILabKaist)에 보면 설명이 되어 있다. Joint Normal Distribution을 이용한 선형대수 식 전개를 거치면 된다.
 
 ## Naive Sampling
 
@@ -162,7 +162,7 @@ $$W_{2,L^2(\mathcal{X})}(f^{(d)},f\mid\bm{y})\leq \newline W_{2,L^2(\mathcal{X})
 
 $$\mathbb{E}_\phi\lVert k^{(d)}-k^{(f\mid\bm{y})}\rVert_{C(\mathcal{X^2})}\newline\leq\lVert k^{(s)}-k^{(f\mid\bm{y})}\rVert_{C(\mathcal{X^2})}+\frac{C_2C_3}{\sqrt{l}}$$
 
-DSGP와 마찬가지로, posterior 사후분포의 공분산함수는 sparse GP의 공분산함수 $$k^{(s)}$$와 prior의 근사치의 공분산함수 $$k^{(w)}$$에 관련된 항으로 나누어질 수 있다. Prior의 근사치에서 발생된 오차는 RFF를 사용하기 때문에 나타나는 오차이며, $$l$$이 증가하는 것과는 무관한 속도로 decay한다. 공분산함수를 몬테카를로 근사할 때 RFF의 성격을 반영한다고 볼 수 있다. 실제로는 학습 데이터 개수 $$n$$이 차원 $$d$$보다 더 빠르게 증가하기 때문에 RFF방법만 사용한다면 variance starvation이 있을 수 있지만 DSGP는 차원에 상관없이 수렴의 속도가 결정된다.
+DSGP와 마찬가지로, posterior 사후분포의 공분산함수는 sparse GP의 공분산함수 $$k^{(s)}$$와 prior의 근사치의 공분산함수 $$k^{(w)}$$에 관련된 항으로 나누어질 수 있다. Prior의 근사치에서 발생된 오차는 RFF를 사용하기 때문에 나타나는 오차이며, basis function의 수 $$l$$이 증가하는 것과는 무관한 속도로 decay한다. 공분산함수를 몬테카를로 근사할 때 RFF의 성격을 반영한다고 볼 수 있다. 실제로는 학습 데이터 개수 $$n$$이 데이터의 차원 $$d$$보다 더 빠르게 증가하는데, RFF방법만 사용한다면 variance starvation이 있어 별로 이득이 없지만 DSGP는 variance starvation 현상이 없어서 차원에 상관없는 수렴속도가 확실히 장점으로 작용하는 것이다.
 
 # My Conclusion
 실험을 몇 개 한 결과도 있었지만 잘 나왔겠지. 개인적으로 Rasmussen & Williams를 보면서 GP 공부를 하고 있었는데 최근에 ICML에 논문이 나와서 바로 읽어봤다. GP는 역사가 오래된 것 같은데 최근까지도 꾸준히 관심을 받는 모델같다. 굉장히 로컬리 근사하면서도 분포에 대한 가정을 잃지 않는 모델인 것 같아서 재밌는거같다. 이론대로 샘플링을 시도하는 건 상당히 비효율적이기 때문에 실생활에 쓰이려면 이 논문과 같은 샘플링 기법을 새로 개발해야 한다는 것도 매력적이다. 역시 이론은 쓸모없어야 제맛이지!
