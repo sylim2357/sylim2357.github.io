@@ -33,11 +33,11 @@ $$\mathcal{X} \subseteq \mathbb{R}^d$$의 정의역을 가지는 알려지지 �
 
 GP란 임의의 유한한 포인트 $$\bold{X}_*\subseteq\mathcal{X}$$에 대해서 랜덤 벡터 $$\bm{f}_*=f(\bold{X}_*)$$가 가우시안 분포를 따르는 랜덤 함수 $$f$$를 말한다. GP는 평균함수 $$\mu$$ 와 공분산함수 $$k$$ 로 정의될 수 있는데, $$f\sim\mathcal{GP}(\mu,k)$$라고 한다면 $$\bm{f}_*\sim\mathcal{N}(\bm{\mu}_*,\bold{K}_{*,*})$$는 커널 $$k$$로 정의되는 공분산함수 $$\bold{K}_{*,*}=k(\bold{X}_*,\bold{X}_*)$$를 가지는 다변량 정규분포를 따른다. 흔히 하듯 평균함수를 0이라고 가정하고, 공분산함수는 정상성을 만족한다고 가정하자.
 
-$$n$$개의 포인트 $$\bm{y}$$를 관찰한 후 $$\bold{X}_*$$에서 정의되는 GP사후분포는 $$\bm{f}_*\,\mid\,\bm{y}\sim\mathcal{N}(\bm{m}_{*\midn},\bold{K}_{*,*\midn})$$이 된다. 여기서 평균함수와 공분산함수는 아래와 같다.
+$$n$$개의 포인트 $$\bm{y}$$를 관찰한 후 $$\bold{X}_*$$ 에서 정의되는 GP사후분포는 $$\bm{f}_*\,\mid \,\bm{y}\sim\mathcal{N}(\bm{m}_{*\mid n},\bold{K}_{*,*\mid n})$$이 된다. 여기서 평균함수와 공분산함수는 아래와 같다.
 
-$$\bm{m}_{*\midn}=\bold{K}_{*,n}(\bold{K}_{n,n}+\sigma^2\bold{I})^{-1}\bm{y}$$
+$$\bm{m}_{*\mid n}=\bold{K}_{*,n}(\bold{K}_{n,n}+\sigma^2\bold{I})^{-1}\bm{y}$$
 
-$$\bold{K}_{*,*\midn}=\bold{K}_{*,*}-\bold{K}_{*,n}(\bold{K}_{n,n}+\sigma^2\bold{I})^{-1}\bold{K}_{n,*}$$
+$$\bold{K}_{*,*\mid n}=\bold{K}_{*,*}-\bold{K}_{*,n}(\bold{K}_{n,n}+\sigma^2\bold{I})^{-1}\bold{K}_{n,*}$$
 
 위 식의 derivation은 문일철교수님의 유튜브 비디오에 보면 설명이 되어 있다. Joint Normal Distribution을 이용한 선형대수 식 전개를 거치면 된다.
 
@@ -45,9 +45,9 @@ $$\bold{K}_{*,*\midn}=\bold{K}_{*,*}-\bold{K}_{*,n}(\bold{K}_{n,n}+\sigma^2\bold
 
 위와 같은 $$\bm{f}_*\,\mid\,\bm{y}$$ 를 샘플링하기 위해서 보통은 표준정규분포 변수를 샘플링한 후 평균과 분산을 이용하여 transform한다. 표준정규분포를 가지는 변수를 $$\zeta\sim\mathcal{N}(0,\bold{I})$$이라 할 때 아래와 같이 샘플링한다.
 
-$$\bm{f}_*\,\mid\,\bm{y}=\bm{m}_{*\midn}+\bold{K}^{1/2}_{*,*\midn}\zeta$$
+$$\bm{f}_*\,\mid\,\bm{y}=\bm{m}_{*\mid n}+\bold{K}^{1/2}_{*,*\mid n}\zeta$$
 
-행렬에 1/2를 씌운 것은 촐레스키분해 등 행렬의 제곱근을 나타내는 것이다. 분명 위와 같이 샘플링하는 것은 이론적으로 완벽하고 수치적인 오류도 없을 것이다. 하지만, $$\bold{K}^{1/2}_{*,*\midn}$$을 계산하는 것에 벌써 $$\mathcal{O}(*^3)$$의 연산량이 들어간다. 테스트 데이터가 많을수록 역수를 취해야하는 행렬이 커지기 때문에 무척 비효율적이게 되는 것이다. 지금까지 제안된 효율적인 샘플링 기법을 살펴보자.
+행렬에 1/2를 씌운 것은 촐레스키분해 등 행렬의 제곱근을 나타내는 것이다. 분명 위와 같이 샘플링하는 것은 이론적으로 완벽하고 수치적인 오류도 없을 것이다. 하지만, $$\bold{K}^{1/2}_{*,*\mid n}$$을 계산하는 것에 벌써 $$\mathcal{O}(*^3)$$의 연산량이 들어간다. 테스트 데이터가 많을수록 역수를 취해야하는 행렬이 커지기 때문에 무척 비효율적이게 되는 것이다. 지금까지 제안된 효율적인 샘플링 기법을 살펴보자.
 
 ## Function-space approximations to GPs
 
@@ -63,9 +63,9 @@ $$p(\bm{f}_*\,\mid\,\bm{y})\approx\int_{\mathbb{R}^m}p(\bm{f_*}\,\mid\,\bm{u})q(
 
 이 때 $$\bm{u}\sim\mathcal{N}(\bm{\mu_{u}},\bold{\Sigma}_\bm{u})$$이라면 위의 적분을 해석적으로 수행할 수 있으며, 가우시안 평균/공분산 함수를 얻을 수 있다. 식은 다음과 같다.
 
-$$\bm{m}_{*\midm}=\bold{K}_{*,m}\bold{K}^{-1}_{m,m}\bm{\mu}_{m}$$
+$$\bm{m}_{*\mid m}=\bold{K}_{*,m}\bold{K}^{-1}_{m,m}\bm{\mu}_{m}$$
 
-$$\bold{K}_{*,*\midm}=\bold{K}_{*,*}+\bold{K}_{*,m}\bold{K}^{-1}_{m,m}(\bold{\Sigma}_\bm{u}-\bold{K}_{m,m})\bold{K}^{-1}_{m,m}\bold{K}_{m,*}$$
+$$\bold{K}_{*,*\mid m}=\bold{K}_{*,*}+\bold{K}_{*,m}\bold{K}^{-1}_{m,m}(\bold{\Sigma}_\bm{u}-\bold{K}_{m,m})\bold{K}^{-1}_{m,m}\bold{K}_{m,*}$$
 
 사용하는 데이터의 수가 적기 때문에 트레이닝은 $$\mathcal{O}(\tilde{n}m^2)$$의 시간 복잡도를 가지고 있다. ($$\tilde{n}\lt n$$은 알고리즘마다 다른 배치 사이즈이다)  이전의 $$\mathcal{O}(n^3)$$ 보다 훨씬 개선된 것이다. 하지만 이는 학습시간의 복잡도를 개선시킨 것이지, 샘플링의 복잡도를 개선한 것은 아니다. 샘플링의 복잡도는 위에서 진행한 나이브한 방식과 똑같다.
 
@@ -84,13 +84,13 @@ $$\bm{\theta}_i$$를 spectral density에 비례하게 샘플링하고 $$\tau_j\s
 
 $$f(\cdot)=\sum^{l}_{i=1}w_i\phi_i(\cdot),\qquad w_i\sim\mathcal{N}(0,1)$$
 
-이제 $$f$$는 marginally Gaussian인 랜덤 함수가 되었고, $$w$$의 분포에 따라서 $$f$$의 분포의 모양 또한 정해지는 것이다. $$w$$의 사후분포 또한 가우시안이 되는데, $$\bm{w}\mid\bm{y}\sim\mathcal{N}(\bm{\mu}_{\bm{w}\midn},\Sigma_{\bm{w}\midn})$$라고 한다면 적률은
+이제 $$f$$는 marginally Gaussian인 랜덤 함수가 되었고, $$w$$의 분포에 따라서 $$f$$의 분포의 모양 또한 정해지는 것이다. $$w$$의 사후분포 또한 가우시안이 되는데, $$\bm{w}\mid\bm{y}\sim\mathcal{N}(\bm{\mu}_{\bm{w}\mid n},\Sigma_{\bm{w}\mid n})$$라고 한다면 적률은
 
-$$\bm{\mu}_{\bm{w}\midn}=(\bold{\Phi}^\top\bold{\Phi}+\sigma^2\bold{I})^{-1}\bold{\Phi}^\top\bm{y}$$
+$$\bm{\mu}_{\bm{w}\mid n}=(\bold{\Phi}^\top\bold{\Phi}+\sigma^2\bold{I})^{-1}\bold{\Phi}^\top\bm{y}$$
 
-$$\Sigma_{\bm{w}\midn}=(\bold{\Phi}^\top\bold{\Phi}+\sigma^2\bold{I})^{-1}\sigma^2$$
+$$\Sigma_{\bm{w}\mid n}=(\bold{\Phi}^\top\bold{\Phi}+\sigma^2\bold{I})^{-1}\sigma^2$$
 
-여기서 $$\bold{\Phi}=\phi(\bold{X})$$는 $$n\times l$$ 피쳐 행렬이다. 어쨌든 위의 적률을 구하기 위해 [Woodbury matrix identity](https://en.wikipedia.org/wiki/Woodbury_matrix_identity)를 사용하면 $$\mathcal{O}(min\{l,n\}^3)$$ 의 복잡도가 필요하다. $$\Sigma^{1/2}_{\bm{w}\midn}$$을 $$\mathcal{O}(l^3)$$이나 들여가며 계산해야 했던 것보다 더 휴욜적인 것이다. 또한, 이 방법은 basis를 샘플링하는 것이기 때문에 특정 포인트에서의 예측 결과를 얻는 것이 아니라 실제 함수를 얻는 방법이다. 한번 함수를 샘플링 한 후에는 임의의 테스트 포인트에 대해서 추가적인 샘플링 연산이 필요하지 않다는 말이다.
+여기서 $$\bold{\Phi}=\phi(\bold{X})$$는 $$n\times l$$ 피쳐 행렬이다. 어쨌든 위의 적률을 구하기 위해 [Woodbury matrix identity](https://en.wikipedia.org/wiki/Woodbury_matrix_identity)를 사용하면 $$\mathcal{O}(min\{l,n\}^3)$$ 의 복잡도가 필요하다. $$\Sigma^{1/2}_{\bm{w}\mid n}$$을 $$\mathcal{O}(l^3)$$이나 들여가며 계산해야 했던 것보다 더 휴욜적인 것이다. 또한, 이 방법은 basis를 샘플링하는 것이기 때문에 특정 포인트에서의 예측 결과를 얻는 것이 아니라 실제 함수를 얻는 방법이다. 한번 함수를 샘플링 한 후에는 임의의 테스트 포인트에 대해서 추가적인 샘플링 연산이 필요하지 않다는 말이다.
 
 하지만 효율적인 만큼 성능이 마냥 좋지많은 않은데, Fourier basis function을 사용하는 것은 stationary GP일 경우에는 상당히 좋지만 그렇지 않을 경우 성능이 확연히 떨어지는 것이다. 일반적으로 stationary라고 부르기 힘든 GP사후분포에 대해서는 variance starvation이라는 현상에 의해 학습 $$n$$이 증가할수록 외삽 예측이 ill-behaving이 된다.
 
