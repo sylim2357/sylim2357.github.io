@@ -15,7 +15,7 @@ last_modified_at: 2020-01-26T05:10:00+09:00
 
 # 개요
 - 내용: 알고리즘 트레이딩이 뭔지, 트레이더 입장에서 어떤 식으로 구현하고 데이터는 어떻게 활용 할 수 있는지 알려주는 코스.
-- Instiution: Indian School of Business
+- Institution: Indian School of Business
 - Workload : 4 wks, 4-5hrs a week
 
 # 장점
