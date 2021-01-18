@@ -134,12 +134,14 @@ $$\alpha_t(\bold{s}_t)=\int p(\bold{s}_t,\bold{s}_{t-1},\bold{a}_{t-1}\mid\mathc
 
 시스템 역학 $$p(\bold{s}_t\mid\bold{s}_{t-1},\bold{a}_{t-1})=p(\bold{s}_t\mid\bold{s}_{t-1},\bold{a}_{t-1},\mathcal{O}_{1:t-1})$$이 알려져있다고 한다면 남은 것은 적분 안에 있는 두번째와 세번째 항이다.
 
-$$p(\bold{a}_{t-1}\mid\bold{s}_{t-1},\mathcal{O}_{t-1})p(\bold{s}_{t-1}\mid\mathcal{O}_{1:t-1})=\frac{p(\mathcal{O}_{t-1}\mid\bold{s}_{t-1},\bold{a}_{t-1})p(\bold{a}_{t-1}\mid\bold{s}_{t-1})}{p(\mathcal{O}_{t-1}\mid\bold{s}_{t-1})}\frac{p(\mathcal{O}_{t-1}\mid\bold{s}_{t-1})p(\bold{s}_{t-1}\mid\mathcal{O}_{1:t-2})}{p(\mathcal{O}_{t-1}\mid\mathcal{O}_{1:t-2})}\\
+$$p(\bold{a}_{t-1}\mid\bold{s}_{t-1},\mathcal{O}_{t-1})p(\bold{s}_{t-1}\mid\mathcal{O}_{1:t-1})=\\
+\frac{p(\mathcal{O}_{t-1}\mid\bold{s}_{t-1},\bold{a}_{t-1})p(\bold{a}_{t-1}\mid\bold{s}_{t-1})}{p(\mathcal{O}_{t-1}\mid\bold{s}_{t-1})}\frac{p(\mathcal{O}_{t-1}\mid\bold{s}_{t-1})p(\bold{s}_{t-1}\mid\mathcal{O}_{1:t-2})}{p(\mathcal{O}_{t-1}\mid\mathcal{O}_{1:t-2})}\\
 =\frac{p(\mathcal{O}_{t-1}\mid\bold{s}_{t-1},\bold{a}_{t-1})p(\bold{a}_{t-1}\mid\bold{s}_{t-1})p(\bold{s}_{t-1}\mid\mathcal{O}_{1:t-2})}{p(\mathcal{O}_{t-1}\mid\mathcal{O}_{1:t-2})}$$
 
 $$p(\bold{s}_{t-1}\mid\mathcal{O}_{1:t-2})=\alpha_{t-1}(\bold{s}_{t-1})$$임을 생각하면 이제 알고있는 정보로 $$\alpha_t(\bold{s}_t)$$를 계산할 수 있게 된다. 여기서 상태 주변분포 $$p(\bold{s}_t\mid\mathcal{O}_{1:T})$$는 어떻게 계산할까? 전체 궤적이 최적일 때 상태 $$\bold{s}_t$$에 방문할 확률이다. $$\mathcal{O}_{t:T}\mid\bold{s}_t$$는 $$\mathcal{O}_{1:t-1}$$에 독립이라는 것을 사용하면,
 
-$$p(\bold{s}_t\mid\mathcal{O}_{1:T})=\frac{p(\bold{s}_t,\mathcal{O}_{1:T})}{p(\mathcal{O}_{1:T})}=\frac{p(\mathcal{O}_{t:T}\mid\bold{s}_t)p(\bold{s}_t,\mathcal{O}_{1:t-1})}{p(\mathcal{O}_{1:T})}\propto p(\mathcal{O}_{t:T}\mid\bold{s}_t)p(\bold{s}_t\mid\mathcal{O}_{1:t-1})p(\mathcal{O}_{1:t-1})\propto\beta_t(\bold{s}_t)\alpha_t(\bold{s}_t)$$
+$$p(\bold{s}_t\mid\mathcal{O}_{1:T})=\frac{p(\bold{s}_t,\mathcal{O}_{1:T})}{p(\mathcal{O}_{1:T})}=\frac{p(\mathcal{O}_{t:T}\mid\bold{s}_t)p(\bold{s}_t,\mathcal{O}_{1:t-1})}{p(\mathcal{O}_{1:T})}\\
+\propto p(\mathcal{O}_{t:T}\mid\bold{s}_t)p(\bold{s}_t\mid\mathcal{O}_{1:t-1})p(\mathcal{O}_{1:t-1})\propto\beta_t(\bold{s}_t)\alpha_t(\bold{s}_t)$$
 
 마지막에 $$p(\mathcal{O}_{1:t-1})$$은 상태 $$\bold{s}_t$$에 의존하지 않으므로 지금은 생각하지 않아도 된다. 즉, 상태 주변 분포는 forward message와 backward message의 곱으로 나타낼 수 있다.
 
