@@ -343,7 +343,7 @@ $$\text{For}\enspace t=T-1\enspace\text{to}\enspace1:\\
 
 이 방법을 두 가지로 확장할 수 있다. 첫번째 줄을 $$Q_t(\bold{s}_t,\bold{a}_t)\leftarrow r(\bold{s}_t,\bold{a}_t)+\gamma\mathbb{E}[V_{t+1}(\bold{s}_{t+1})]$$로 써서 할인율을 감안하는 모델을 만들 수도 있고, 두 번째 줄에서 softmax의 정도를 나타내는 temperature parameter $$\alpha$$를 도입하여 $$\alpha\log\int\exp(\frac{1}{\alpha}Q_t(\bold{s}_t,\bold{a}_t))d\bold{a}_t$$로 바꾸면 얼마나 soft한 max를 취할 건지를 조정할 수도 있다. $$\alpha$$가 0에 가까워질수록 결정적인, $$\max$$오퍼레이터와 비슷하게 되고, $$\alpha$$가 1에 가까워질수록 soft해진다.
 
-정리하면, $$**q(\tau)$$와 $$p(\mathcal{O}_{1:T},\tau)$$의 거리를 좁히는 것은 ELBO를 최적화하는 것과 같으며, 이는 최대 엔트로피 강화학습 문제를 푸는것과 같다**.
+정리하면, **$$q(\tau)$$와 $$p(\mathcal{O}_{1:T},\tau)$$의 거리를 좁히는 것은 ELBO를 최적화하는 것과 같으며, 이는 최대 엔트로피 강화학습 문제를 푸는것과 같다**.
 
 # Approximate Inference with Function Approximation
 
