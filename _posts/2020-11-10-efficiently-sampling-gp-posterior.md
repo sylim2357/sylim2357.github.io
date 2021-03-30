@@ -19,7 +19,7 @@ ICML2020에 임페리얼(!) 이랑 UCL의 Marc Deisenroth와 연구진이 투고
 
 # Introduction
 
-GP는 데이터를 잘 나타낼 수 있는 함수의 분포를 추정하는 방식이다. 인풋 데이터를 하나의 랜덤 변수로 생각하여 각 데이터쌍의 관계를 모델링하는 형식으로 진행된다. 인풋 x와 covariance function으로 GP prior를 정의하고 트레이닝 y의 정보를 함수에 포함시켜서 GP posterior 분포를 만든다. 이 때 결과물은 함수의 분포라는 것이 중요한 점이다. Prior/Posterior 개념과 함수 분포의 개념이 함께 등장하기 때문에 GP를 Weight Space, Function Space 양쪽 시각에서 다 바라볼 수 있다. 이 부분은 GP의 교과서인 [Gaussian Processes for Machine Learning](http://www.gaussianprocess.org/gpml/)를 보면 잘 공부할 수 있다.
+GP는 데이터를 잘 나타낼 수 있는 함수의 분포를 추정하는 방식이다. 인풋 데이터를 하나의 랜덤 변수로 생각하여 각 데이터쌍의 관계를 모델링하는 형식으로 진행된다. Covariance function으로 GP prior를 정의하고 트레이닝 데이터의 정보를 함수에 포함시켜서 GP posterior 분포를 만든다. 이 때 결과물은 함수의 분포라는 것이 중요한 점이다. Prior/Posterior 개념과 함수 분포의 개념이 함께 등장하기 때문에 GP를 Weight Space, Function Space 양쪽 시각에서 다 바라볼 수 있다. 이 부분은 GP의 교과서인 [Gaussian Processes for Machine Learning](http://www.gaussianprocess.org/gpml/)를 보면 잘 공부할 수 있다.
 
 대부분의 경우 베이지안 방식을 활용하여 얻은 함수 분포는 해석적으로 계산이 불가능한 경우가 많기 때문에 몬테카를로 기법을 사용하지만 GP는 해석적으로 분포를 알아낼 수 있다. 정규성에 대한 가정이 들어가있기 때문이다. 하지만, GP를 통해 결정을 내려야 할때는 (강화학습 등) 분포 자체보다는 분포에서 얻은 명확한 함수를 얻는 것이 더 도움이 된다.
 
