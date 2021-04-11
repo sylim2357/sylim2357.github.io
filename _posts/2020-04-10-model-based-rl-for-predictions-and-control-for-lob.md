@@ -1,5 +1,5 @@
 ---
-title:  "Model-based Reinforcement Learning for Predictions and Control for Limit Order Books"
+title:  "[Paper Review] Model-based Reinforcement Learning for Predictions and Control for Limit Order Books"
 excerpt: "Wei, Haoran, et al. \"Model-based Reinforcement Learning for Predictions and Control for Limit Order Books.\" arXiv preprint arXiv:1910.03743 (2019)."
 toc: true
 toc_sticky: true
