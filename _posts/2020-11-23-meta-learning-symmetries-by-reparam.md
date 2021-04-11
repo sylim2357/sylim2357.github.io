@@ -1,5 +1,5 @@
 ---
-title:  "Meta-Learning Symmetries by Reparameterization"
+title:  "[Paper Review] Meta-Learning Symmetries by Reparameterization"
 excerpt: "Zhou, Allan, Tom Knowles, and Chelsea Finn. \"Meta-learning symmetries by reparameterization.\" arXiv preprint arXiv:2007.02933 (2020)."
 toc: true
 toc_sticky: true
