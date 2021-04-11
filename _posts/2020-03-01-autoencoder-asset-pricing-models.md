@@ -1,5 +1,5 @@
 ---
-title:  "Autoencoder Asset Pricing Models"
+title:  "[Paper Review] Autoencoder Asset Pricing Models"
 excerpt: "Gu, Shihao, Bryan T. Kelly, and Dacheng Xiu. \"Autoencoder asset pricing models.\" Available at SSRN (2019)."
 toc: true
 toc_sticky: true
