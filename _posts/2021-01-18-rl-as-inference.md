@@ -1,5 +1,5 @@
 ---
-title:  "Reinforcement Learning and Control as Probabilistic Inference: Tutorial and Review"
+title:  "[Paper Review] Reinforcement Learning and Control as Probabilistic Inference: Tutorial and Review"
 excerpt: "Levine, Sergey. \"Reinforcement learning and control as probabilistic inference: Tutorial and review.\" arXiv preprint arXiv:1805.00909 (2018)."
 toc: true
 toc_sticky: true
