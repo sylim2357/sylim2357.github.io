@@ -1,5 +1,5 @@
 ---
-title:  "Efficiently Sampling Functions from Gaussian Process Posteriors"
+title:  "[Paper Review] Efficiently Sampling Functions from Gaussian Process Posteriors"
 excerpt: "BWilson, James T., et al. \"Efficiently sampling functions from Gaussian process posteriors.\" arXiv preprint arXiv:2002.09309 (2020)."
 toc: true
 toc_sticky: true
