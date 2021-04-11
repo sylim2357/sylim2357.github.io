@@ -1,5 +1,5 @@
 ---
-title:  "Stock Selection via Nonlinear Multi-Factor Models"
+title:  "[Paper Review] Stock Selection via Nonlinear Multi-Factor Models"
 excerpt: "Levin, Asriel E. \"Stock selection via nonlinear multi-factor models.\" Advances in Neural Information Processing Systems. 1996."
 toc: true
 toc_sticky: true
